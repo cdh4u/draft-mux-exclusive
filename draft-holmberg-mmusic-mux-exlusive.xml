@@ -131,6 +131,17 @@ NEW TEXT:
                         ]]></artwork>
                     </figure>
         </section>
+        <section title="Issues And TBDs">
+            <t>
+                ISSUE #1: We may want to specify an explicit procedure for the
+                answerer too, saying that it must select mux if it receives
+                rtcp-mux and rtcp with the RTP port value.
+            </t>
+            <t>
+                ISSUE #2: We may want to specify something about the case when
+                the answerer only supports mux, and receives an offer without mux.
+            </t>
+        </section>
 	</section>
 	
 	<section title="Security Considerations">

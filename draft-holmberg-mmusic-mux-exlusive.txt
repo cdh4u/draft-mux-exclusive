@@ -72,7 +72,8 @@ Table of Contents
    4.  Update to RFC 5761  . . . . . . . . . . . . . . . . . . . . .   3
      4.1.  General . . . . . . . . . . . . . . . . . . . . . . . . .   3
      4.2.  RFC 5761 Section 5.1.1 Update . . . . . . . . . . . . . .   3
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+     4.3.  Issues And TBDs . . . . . . . . . . . . . . . . . . . . .   3
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
    7.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   4
    8.  Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .   4
@@ -104,7 +105,6 @@ Table of Contents
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
-
 
 
 
@@ -152,14 +152,14 @@ Internet-Draft           Exclusive RTP/RTCP Mux            November 2015
     port value for RTP. For example:
 
 
-5.  Security Considerations
+4.3.  Issues And TBDs
 
-   This document does not introduce new security considerations in
-   additions to those specified in [RFC3605] and [RFC5761].
+   ISSUE #1: We may want to specify an explicit procedure for the
+   answerer too, saying that it must select mux if it receives rtcp-mux
+   and rtcp with the RTP port value.
 
-
-
-
+   ISSUE #2: We may want to specify something about the case when the
+   answerer only supports mux, and receives an offer without mux.
 
 
 
@@ -168,6 +168,11 @@ Holmberg                   Expires May 7, 2016                  [Page 3]
 
 Internet-Draft           Exclusive RTP/RTCP Mux            November 2015
 
+
+5.  Security Considerations
+
+   This document does not introduce new security considerations in
+   additions to those specified in [RFC3605] and [RFC5761].
 
 6.  IANA Considerations
 
@@ -209,6 +214,17 @@ Internet-Draft           Exclusive RTP/RTCP Mux            November 2015
 
 Author's Address
 
+
+
+
+
+
+
+Holmberg                   Expires May 7, 2016                  [Page 4]
+
+Internet-Draft           Exclusive RTP/RTCP Mux            November 2015
+
+
    Christer Holmberg
    Ericsson
    Hirsalantie 11
@@ -220,4 +236,44 @@ Author's Address
 
 
 
-Holmberg                   Expires May 7, 2016                  [Page 4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Holmberg                   Expires May 7, 2016                  [Page 5]
