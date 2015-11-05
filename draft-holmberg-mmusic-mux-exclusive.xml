@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- comment -->
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd"[]>
+<?rfc toc="yes" ?>
+<?rfc compact="yes" ?>
+<?rfc sortrefs="no" ?>
+<rfc ipr="trust200902" category="info" docName="draft-holmberg-mmusic-mux-exclusive-00" updates="5761" submissionType="IETF" xml:lang="en">
+  <front>
+    <title abbrev="Exclusive RTP/RTCP Mux">
+		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
+	</title>
+    <author fullname="Christer Holmberg" initials="C.H." surname="Holmberg">
+      <organization abbrev="Ericsson">Ericsson</organization>
+      <address>
+        <postal>
+          <street>Hirsalantie 11</street>
+          <city>Jorvas</city>
+          <region></region>
+          <code>02420</code>
+          <country>Finland</country>
+        </postal>
+        <phone></phone>
+        <email>christer.holmberg@ericsson.com</email>
+      </address>
+    </author> 
+    	
+    <date year="2015" />
+    <area>Transport</area>
+    <keyword>RTP</keyword>
+	<keyword>RTCP</keyword>
+	<keyword>SDP</keyword>
+	<keyword>OFFER</keyword>
+	<keyword>ANSWER</keyword>
+    <keyword>MUX</keyword>
+    <keyword>MULTIPLEX</keyword>
+    <keyword>RTCWEB</keyword>
+    <keyword>WEBRTC</keyword>
+    <keyword>JSEP</keyword>
+    <abstract>
+        <t>
+            This document defines how an endpoint can indicate exclusive support of
+            RTP/RTCP multiplexing using the Session Description Protocol (SDP).
+        </t>
+        <t>
+            The document updates RFC 5761, by defining how the SDP 'rtcp' attribute
+            is used, together with the SDP 'rtcp-mux' attribute, to indicate exclusive
+            support of RTP/RTCP multiplexing.
+        </t>
+        <t>
+            Editor's note: 'exclusive' is probably not the best terminology, so feel
+            free to suggest something more appropriate.
+        </t>
+    </abstract>
+</front>
+
+<middle>
+    <section title="Introduction">
+		<t>
+            <xref target="RFC5761" pageno="false" format="default"/> defines how to
+            multiplex RTP and RTCP on a single port, referred to as RTP/RTCP multiplexing.
+            <xref target="RFC5761" pageno="false" format="default"/> also defines an
+            Session Description Protocol (SDP) <xref target="RFC4566" pageno="false" 
+            format="default"/> attribute, 'rtcp-mux' that can be used by entities
+            to indicate support of RTP/RTCP multiplexing.
+        </t>
+        <t>
+            <xref target="RFC5761" pageno="false" format="default"/> specifies that, if
+            the peer endpoint does not support RTP/RTCP multiplexing, there must be a
+            fallback to usage of different ports for RTP and RTCP. However, the RTCWEB
+            WG have defined that the support of using different ports is optional.
+            Therefor, there needs to be a mechanism for an endpoint to indicate exclusive
+            support of RTP/RTCP multiplexing, i.e. indicate that the endpoint only
+            supports RTP/RTCP multiplexing.
+        </t>
+        <t>
+            The document updates section 5.1.1 of <xref target="RFC5761" pageno="false" 
+            format="default"/>, by defining how the SDP 'rtcp' attribute
+            is used, together with the SDP 'rtcp-mux' attribute, to indicate exclusive
+            support of RTP/RTCP multiplexing.
+        </t>
+    </section>
+		
+    <section title="Conventions">
+		<t>
+			The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+			"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+			document are to be interpreted as described in <xref target="RFC2119"></xref>.
+		</t>
+    </section>
+    <section title="SDP Offer/Answer Considerations">
+			<t>
+                When an offerer sends an offer, if the offerer supports
+                RTP/RTCP multiplexing, the offerer must associate an
+                SDP 'rtcp-mux' attribute
+            </t>
+	</section>
+    <section title="Update to RFC 5761">
+        <section title="General">
+			<t>
+                This section updates section 5.1.1 of <xref target="RFC5761" 
+                pageno="false" format="default"/>, by replacing the text in
+                the first paragraph with the new text defined in this section.
+            </t>
+        </section>
+        <section title="RFC 5761 Section 5.1.1 Update">
+                    <figure>
+                        <artwork align="left" alt="" height="" name="" type="" width="" xml:space="preserve"><![CDATA[
+
+OLD TEXT:
+
+   When the Session Description Protocol (SDP) [8] is used to negotiate
+   RTP sessions following the offer/answer model [9], the "a=rtcp-mux"
+   attribute (see Section 8) indicates the desire to multiplex RTP and
+   RTCP onto a single port.  The initial SDP offer MUST include this
+   attribute at the media level to request multiplexing of RTP and RTCP
+   on a single port.  For example:
+
+
+NEW TEXT:
+
+   When the Session Description Protocol (SDP) [8] is used to negotiate
+   RTP sessions following the offer/answer model [9], the "a=rtcp-mux"
+   attribute (see Section 8) indicates the desire to multiplex RTP and
+   RTCP onto a single port.  The initial SDP offer MUST include this
+   attribute at the media level to request multiplexing of RTP and RTCP
+   on a single port. If the offerer is not able to use different ports
+   for RTP and RTCP, the SDP offer MUST also include the "a=rtcp"
+   attribute [10] with an attribute value identical to the associated
+   port value for RTP. For example:
+
+                        ]]></artwork>
+                    </figure>
+        </section>
+        <section title="Issues And TBDs">
+            <t>
+                ISSUE #1: We may want to specify an explicit procedure for the
+                answerer too, saying that it must select mux if it receives
+                rtcp-mux and rtcp with the RTP port value.
+            </t>
+            <t>
+                ISSUE #2: We may want to specify something about the case when
+                the answerer only supports mux, and receives an offer without mux.
+            </t>
+        </section>
+	</section>
+	
+	<section title="Security Considerations">
+		<t>
+            This document does not introduce new security considerations
+            in additions to those specified in <xref target="RFC3605" 
+            pageno="false" format="default"/> and <xref target="RFC5761" 
+            pageno="false" format="default"/>.
+		</t>
+	</section>
+
+	<section anchor="section.iana" title="IANA Considerations">
+        <t>
+            This document makes no requests from IANA.
+        </t>
+	</section>
+                   
+	<section title="Acknowledgments">
+		<t>
+            TBD
+		</t>
+	</section>
+		
+	<section title="Change Log">	
+		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
+	</section>
+</middle>
+
+<back>
+    <references title="Normative References">
+		<?rfc include="reference.RFC.2119"?>
+		<?rfc include="reference.RFC.3264"?>
+        <?rfc include="reference.RFC.3605"?>
+        <?rfc include="reference.RFC.4566"?>
+        <?rfc include="reference.RFC.5761"?>
+    </references>
+</back>
+</rfc>
