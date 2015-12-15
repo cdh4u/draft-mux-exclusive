@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="info" docName="draft-holmberg-mmusic-mux-exclusive-01" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="info" docName="draft-holmberg-mmusic-mux-exclusive-02" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -107,9 +107,11 @@
                 support of RTP/RTCP multiplexing it MUST, in addition to the
                 SDP 'rtcp-attribute, associate an SDP 'rtcp' attribute with each
                 SDP media description for which exclusive support of RTP/RTCP 
-                multiplexing is indicated. The offerer MUST assign a value identical
+                multiplexing is indicated. The offerer MUST assign a port value identical
                 to the port value of the associated SDP media description to the
-                'rtcp' attribute.
+                'rtcp' attribute. The offerer MAY assign the optional IP address
+                part to the 'rtcp' attribute. If assigned, the IP address part value MUST
+                be identical to the value of the associated connection address ("c=" line).
             </t>
 	</section>
     <section title="Update to RFC 5761">
@@ -172,8 +174,11 @@ NEW TEXT:
    line indicating a fallback port for RTCP. If the offerer is not
    able to use separate ports for RTP and RTCP the offer MUST NOT
    contain "a=candidate:" lines for RTCP, and the "a=rtcp:" line
-   MUST indicate the RTP port. This MUST be done for each media where
-   RTP and RTCP multiplexing is desired.
+   MUST indicate the RTP port. If the "a=rtcp:" line indicates the
+   RTP port, and if the "a=rtcp:" line also contains the optional
+   IP address part, the IP address part value MUST be identical to
+   the value of the associated "c=" line. The This MUST be done for 
+   each media where RTP and RTCP multiplexing is desired.
  
                 ]]></artwork>
             </figure>
@@ -230,6 +235,15 @@ NEW TEXT:
 		
 	<section title="Change Log">	
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
+        <t>
+			Changes from draft-holmberg-mmusic-mux-exclusive-01
+			<list style="symbols">
+				<t>
+                    Clarified that the SDP rtcp attribute may contain the
+                    optional IP address part.
+                </t>
+			</list>
+		</t>			
         <t>
 			Changes from draft-holmberg-mmusic-mux-exclusive-00
 			<list style="symbols">

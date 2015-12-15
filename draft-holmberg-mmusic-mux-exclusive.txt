@@ -3,13 +3,13 @@
 
 Network Working Group                                        C. Holmberg
 Internet-Draft                                                  Ericsson
-Updates: 5761 (if approved)                             December 8, 2015
+Updates: 5761 (if approved)                            December 15, 2015
 Intended status: Informational
-Expires: June 10, 2016
+Expires: June 17, 2016
 
 
     Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
-                 draft-holmberg-mmusic-mux-exclusive-01
+                 draft-holmberg-mmusic-mux-exclusive-02
 
 Abstract
 
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 10, 2016.
+   This Internet-Draft will expire on June 17, 2016.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Holmberg                  Expires June 10, 2016                 [Page 1]
+Holmberg                  Expires June 17, 2016                 [Page 1]
 
 Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
 
@@ -72,12 +72,12 @@ Table of Contents
      4.3.  RFC 5761 Section 5.1.3 Update . . . . . . . . . . . . . .   4
      4.4.  Issues And TBDs . . . . . . . . . . . . . . . . . . . . .   5
    5.  ICE Considerations  . . . . . . . . . . . . . . . . . . . . .   5
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   5
-   9.  Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+   8.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
+   9.  Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .   6
    10. Normative References  . . . . . . . . . . . . . . . . . . . .   6
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
 
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Holmberg                  Expires June 10, 2016                 [Page 2]
+Holmberg                  Expires June 17, 2016                 [Page 2]
 
 Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
 
@@ -133,9 +133,12 @@ Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
    support of RTP/RTCP multiplexing it MUST, in addition to the SDP
    'rtcp-attribute, associate an SDP 'rtcp' attribute with each SDP
    media description for which exclusive support of RTP/RTCP
-   multiplexing is indicated.  The offerer MUST assign a value identical
-   to the port value of the associated SDP media description to the
-   'rtcp' attribute.
+   multiplexing is indicated.  The offerer MUST assign a port value
+   identical to the port value of the associated SDP media description
+   to the 'rtcp' attribute.  The offerer MAY assign the optional IP
+   address part to the 'rtcp' attribute.  If assigned, the IP address
+   part value MUST be identical to the value of the associated
+   connection address ("c=" line).
 
 4.  Update to RFC 5761
 
@@ -161,10 +164,7 @@ Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
 
 
 
-
-
-
-Holmberg                  Expires June 10, 2016                 [Page 3]
+Holmberg                  Expires June 17, 2016                 [Page 3]
 
 Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
 
@@ -190,6 +190,41 @@ Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
 4.3.  RFC 5761 Section 5.1.3 Update
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Holmberg                  Expires June 17, 2016                 [Page 4]
+
+Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
+
+
 OLD TEXT:
 
    If it is desired to use both ICE and multiplexed RTP and RTCP, the
@@ -212,17 +247,11 @@ NEW TEXT:
    line indicating a fallback port for RTCP. If the offerer is not
    able to use separate ports for RTP and RTCP the offer MUST NOT
    contain "a=candidate:" lines for RTCP, and the "a=rtcp:" line
-   MUST indicate the RTP port. This MUST be done for each media where
-   RTP and RTCP multiplexing is desired.
-
-
-
-
-
-
-Holmberg                  Expires June 10, 2016                 [Page 4]
-
-Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
+   MUST indicate the RTP port. If the "a=rtcp:" line indicates the
+   RTP port, and if the "a=rtcp:" line also contains the optional
+   IP address part, the IP address part value MUST be identical to
+   the value of the associated "c=" line. The This MUST be done for
+   each media where RTP and RTCP multiplexing is desired.
 
 
 4.4.  Issues And TBDs
@@ -243,6 +272,15 @@ Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
    exclusive support of RTP/RTCP multiplexing.  RTCP candidates would
    not be provided also in cases where RTCP is not supported at all.
    Therefore, additional information is needed in order to indicate
+
+
+
+
+Holmberg                  Expires June 17, 2016                 [Page 5]
+
+Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
+
+
    support of exclusive RTP/RTCP multiplexing.  This document defines
    such mechanism using the SDP 'rtcp-mux' and 'rtcp' attributes.
 
@@ -264,22 +302,16 @@ Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
 
    [RFC EDITOR NOTE: Please remove this section when publishing]
 
+   Changes from draft-holmberg-mmusic-mux-exclusive-01
+
+   o  Clarified that the SDP rtcp attribute may contain the optional IP
+      address part.
+
    Changes from draft-holmberg-mmusic-mux-exclusive-00
 
    o  Additional updates to Section 5.1.1 of RFC 5761.
 
    o  ICE considerations added.
-
-
-
-
-
-
-
-Holmberg                  Expires June 10, 2016                 [Page 5]
-
-Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
-
 
 10.  Normative References
 
@@ -297,6 +329,13 @@ Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
               in Session Description Protocol (SDP)", RFC 3605,
               DOI 10.17487/RFC3605, October 2003,
               <http://www.rfc-editor.org/info/rfc3605>.
+
+
+
+Holmberg                  Expires June 17, 2016                 [Page 6]
+
+Internet-Draft           Exclusive RTP/RTCP Mux            December 2015
+
 
    [RFC4566]  Handley, M., Jacobson, V., and C. Perkins, "SDP: Session
               Description Protocol", RFC 4566, DOI 10.17487/RFC4566,
@@ -332,4 +371,21 @@ Author's Address
 
 
 
-Holmberg                  Expires June 10, 2016                 [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Holmberg                  Expires June 17, 2016                 [Page 7]
