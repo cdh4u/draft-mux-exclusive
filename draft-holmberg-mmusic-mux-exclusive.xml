@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="info" docName="draft-holmberg-mmusic-mux-exclusive-02" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-holmberg-mmusic-mux-exclusive-03" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -235,6 +235,14 @@ NEW TEXT:
 		
 	<section title="Change Log">	
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
+        <t>
+			Changes from draft-holmberg-mmusic-mux-exclusive-02
+			<list style="symbols">
+				<t>
+                    Intended status changed to "Standards track".
+                </t>
+			</list>
+		</t>			
         <t>
 			Changes from draft-holmberg-mmusic-mux-exclusive-01
 			<list style="symbols">
