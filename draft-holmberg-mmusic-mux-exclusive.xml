@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="info" docName="draft-holmberg-mmusic-mux-exclusive-01" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="info" docName="draft-holmberg-mmusic-mux-exclusive-02" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
