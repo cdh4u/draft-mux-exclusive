@@ -9,7 +9,7 @@ Expires: June 17, 2016
 
 
     Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
-                 draft-holmberg-mmusic-mux-exclusive-02
+                 draft-holmberg-mmusic-mux-exclusive-01
 
 Abstract
 
