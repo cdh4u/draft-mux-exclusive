@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-01" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-02" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -48,7 +48,7 @@
     <section title="Introduction">
 		<t>
             <xref target="RFC5761" pageno="false" format="default"/> defines how to
-            multiplex RTP and RTCP on a single address and port, referred to as RTP/RTCP multiplexing.
+            multiplex RTP and RTCP on a single IP address and port, referred to as RTP/RTCP multiplexing.
             <xref target="RFC5761" pageno="false" format="default"/> also defines an
             Session Description Protocol (SDP) <xref target="RFC4566" pageno="false" 
             format="default"/> attribute, 'rtcp-mux' that can be used by entities
@@ -92,11 +92,15 @@
 
        Name: rtcp-mux-exclusive
 
-       Value:
+       Value: N/A
 
        Usage Level: media
 
        Charset Dependent: no
+
+       Syntax:
+
+           rtcp-mux-exclusive
 
        Example:
 
@@ -117,6 +121,19 @@
         <t>
             The usage of the SDP 'rtcp-mux-exclusive' attribute is only defined for RTP-based
             media.
+        </t>
+        <t>
+            The mux category <xref target="I-D.ietf-mmusic-sdp-mux-attributes"/> 
+            for the 'rtcp-mux-exclusive' attribute is 'NORMAL', which means that the
+            attribute can be associated with an individual media description, even if the
+            media description is multiplexed with other media descriptions
+            <xref target="I-D.ietf-mmusic-sdp-bundle-negotiation"/> with which the
+            attribute is not associated.
+        </t>
+        <t>
+            The 'rtcp-mux-exclusive' attribute applies to the whole associated
+            media description. The attribute MUST NOT be defined per source (using the
+            SDP 'ssrc' attribute <xref format="default" pageno="false" target="RFC5576"/>). 
         </t>
         <t>
             The SDP offer/answer <xref format="default" pageno="false" target="RFC3264"/> 
@@ -199,10 +216,9 @@
             <t>
                 When an offerer sends a subsequent offer, if the offerer and answerer have previously
                 negotiated usage of RTP/RTCP multiplexing for the media associated with an
-                RTP-based SDP media description ("m=" line) using the SDP 'rtcp-mux-exclusive' attribute, 
-                the offerer SHOULD associate an SDP 'rtcp-mux-exclusive' attribute and an SDP 'rtcp-mux' 
-                attribute with the corresponding SDP media description ("m=" line). If the offerer does 
-                not associate the attributes with the corresponding SDP media description ("m=" line)
+                RTP-based SDP media description ("m=" line), the offerer SHOULD associate an SDP 'rtcp-mux-exclusive'
+                attribute and an SDP 'rtcp-mux' attribute with the corresponding SDP media description ("m=" line). 
+                If the offerer does not associate the attributes with the corresponding SDP media description ("m=" line)
                 it is an indication that the offerer no longer wants to use RTP/RTCP multiplexing, and instead
                 MUST fallback to usage of separate ports for RTP and RTCP once the offer has been accepted
                 by the answerer.
@@ -261,8 +277,10 @@
     Type of attribute: media-level
     Subject to charset: no
     Purpose: Indicate exclusive support of RTP/RTCP multiplexing
-    Appropriate Values: N/A
+    Appropriate Values:
     Contact name: Christer Holmberg
+    Category: NORMAL
+    
     
 			]]></artwork>
 		</figure>        
@@ -278,13 +296,18 @@
 	<section title="Change Log">	
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
         <t>
+			Changes from draft-ietf-mmusic-rtcp-mux-exclusive-01
+			<list style="symbols">
+				<t>
+                    Mux category and source-specific applicability added.
+                </t>
+			</list>
+		</t>			
+        <t>
 			Changes from draft-ietf-mmusic-rtcp-mux-exclusive-00
 			<list style="symbols">
 				<t>
                     Defined new SDP attribute for indicating rtcp-mux-exclusive.
-                </t>
-                <t>
-                    Additional text added to session modification section.
                 </t>
                 <t>
                     Updates to RFC 5761 removed.
@@ -343,6 +366,9 @@
     </references>
     <references title="Informative References">
         <?rfc include="reference.RFC.3605"?>
+        <?rfc include="reference.RFC.5576"?>
+        <?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-12"?>
+        <?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-25"?>
     </references>
 </back>
 </rfc>
