@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-04" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-05" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -22,8 +22,8 @@
         <phone></phone>
         <email>christer.holmberg@ericsson.com</email>
       </address>
-    </author> 
-    	
+    </author>
+
     <date year="2016" />
     <area>Transport</area>
     <keyword>RTP</keyword>
@@ -40,7 +40,7 @@
         <t>
             This document defines a new SDP media-level attribute, 'rtcp-mux-only', that can
             be used by an endpoint to indicate exclusive support of RTP/RTCP multiplexing. The
-            document also updates RFC 5761, by clarifying that an offerer can use a mechanism 
+            document also updates RFC 5761, by clarifying that an offerer can use a mechanism
             to indicate that it is not able to send and receive RTCP on separate ports.
         </t>
     </abstract>
@@ -52,7 +52,7 @@
             <xref target="RFC5761" pageno="false" format="default"/> defines how to
             multiplex RTP and RTCP on a single IP address and port, referred to as RTP/RTCP multiplexing.
             <xref target="RFC5761" pageno="false" format="default"/> also defines an
-            Session Description Protocol (SDP) <xref target="RFC4566" pageno="false" 
+            Session Description Protocol (SDP) <xref target="RFC4566" pageno="false"
             format="default"/> attribute, 'rtcp-mux' that can be used by entities
             to indicate support, and negotiate usage of, RTP/RTCP multiplexing.
         </t>
@@ -63,24 +63,24 @@
             to usage of separate ports for RTP and RTCP).
         </t>
         <t>
-            Some newer applications that do not require backward compatibility with peers 
-            that cannot multiplex RTCP might choose to not implement separation of 
-            RTP and RTCP. For those applications, this document defines an SDP attribute 
+            Some newer applications that do not require backward compatibility with peers
+            that cannot multiplex RTCP might choose to not implement separation of
+            RTP and RTCP. For those applications, this document defines an SDP attribute
             to signal intent to require multiplexing.
         </t>
         <t>
             This document defines a new SDP media-level attribute, 'rtcp-mux-only', that can
             be used by an endpoint to indicate exclusive support of RTP/RTCP multiplexing. The
-            document also updates RFC 5761, by clarifying that an offerer can use a mechanism 
+            document also updates RFC 5761, by clarifying that an offerer can use a mechanism
             to indicate that it is not able to send and receive RTCP on separate ports.
         </t>
         <t>
-            The document also describes the Interactive Connectivity Establishment (ICE) 
-            <xref target="I-D.ietf-ice-rfc5245bis"/> considerations when indicating exclusive
-            support of RTP/RTCP multiplexing.        
+            The document also describes the Interactive Connectivity Establishment (ICE)
+            <xref target="RFC5245"/> considerations when indicating exclusive
+            support of RTP/RTCP multiplexing.
         </t>
     </section>
-		
+
     <section title="Conventions">
 		<t>
 			The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -110,7 +110,7 @@
        Example:
 
            a=rtcp-mux-only
-           
+
            	]]></artwork>
 		</figure>
         <t>
@@ -128,7 +128,7 @@
             media.
         </t>
         <t>
-            The mux category <xref target="I-D.ietf-mmusic-sdp-mux-attributes"/> 
+            The mux category <xref target="I-D.ietf-mmusic-sdp-mux-attributes"/>
             for the 'rtcp-mux-only' attribute is 'NORMAL', which means that the
             attribute can be associated with an individual media description, even if the
             media description is multiplexed with other media descriptions
@@ -138,14 +138,14 @@
         <t>
             The 'rtcp-mux-only' attribute applies to the whole associated
             media description. The attribute MUST NOT be defined per source (using the
-            SDP 'ssrc' attribute <xref format="default" pageno="false" target="RFC5576"/>). 
+            SDP 'ssrc' attribute <xref format="default" pageno="false" target="RFC5576"/>).
         </t>
         <t>
-            The SDP offer/answer <xref format="default" pageno="false" target="RFC3264"/> 
+            The SDP offer/answer <xref format="default" pageno="false" target="RFC3264"/>
             procedures associated with the attribute are defined in <xref target="sec-oa"/>
         </t>
     </section>
-    
+
     <section title="SDP Offer/Answer Procedures" anchor="sec-oa">
         <section title="General">
             <t>
@@ -154,11 +154,11 @@
                 RTP/RTCP multiplexing.
             </t>
 			<t>
-                The procedures in this section apply to individual RTP-based 
+                The procedures in this section apply to individual RTP-based
                 SDP media descriptions ("m=" lines).
 			</t>
         </section>
-        
+
         <section title="Generating the Initial SDP Offer" anchor="sec-of-ini-off">
             <t>
                 When an offerer sends the initial offer, if the offerer wants to indicate
@@ -168,27 +168,27 @@
             </t>
             <t>
                 In addition, if the offerer associates an SDP 'rtcp-mux-only' attribute with
-                an SDP media description ("m=" line), the offerer MAY also associate an 
-                SDP 'rtcp-mux' attribute with the same SDP media description ("m=" line), following 
+                an SDP media description ("m=" line), the offerer MAY also associate an
+                SDP 'rtcp-mux' attribute with the same SDP media description ("m=" line), following
                 the procedures in <xref target="RFC5761" pageno="false" format="default"/>.
             </t>
             <t>
-                If the offerer associates an SDP 'rtcp' attribute <xref target="RFC3605" pageno="false" format="default"/> 
-                with an SDP media description ("m=" line), and if the offerer also associates an 
-                SDP 'rtcp-mux-only' attribute with the same SDP media description ("m=" line), the address and port 
+                If the offerer associates an SDP 'rtcp' attribute <xref target="RFC3605" pageno="false" format="default"/>
+                with an SDP media description ("m=" line), and if the offerer also associates an
+                SDP 'rtcp-mux-only' attribute with the same SDP media description ("m=" line), the address and port
                 values of the SDP 'rtcp' attribute MUST match the corresponding values for RTP.
             </t>
             <t>
                 NOTE: This specification does not mandate the usage of the SDP 'rtcp' attribute for RTP/RTCP multiplexing.
             </t>
         </section>
-        <section title="Generating the Answer">       
+        <section title="Generating the Answer">
             <t>
-                When an answerer receives an offer that contains an SDP 'rtcp-mux-only' attribute, associated with 
-                an RTP-based SDP media description ("m=" line), if the answerer accepts the usage of 
-                RTP/RTCP multiplexing, the answerer MUST associate an SDP 'rtcp-mux-only' attribute with 
-                the corresponding SDP media description ("m=") in the associated answer. If the answerer does not 
-                accept the usage of RTP/RTCP multiplexing, the answerer MUST either reject the SDP media description ("m=") 
+                When an answerer receives an offer that contains an SDP 'rtcp-mux-only' attribute, associated with
+                an RTP-based SDP media description ("m=" line), if the answerer accepts the usage of
+                RTP/RTCP multiplexing, the answerer MUST associate an SDP 'rtcp-mux-only' attribute with
+                the corresponding SDP media description ("m=") in the associated answer. If the answerer does not
+                accept the usage of RTP/RTCP multiplexing, the answerer MUST either reject the SDP media description ("m=")
                 by setting the port value to zero in the associated answer, or reject the whole offer,
                 following the procedures in <xref target="RFC3264" pageno="false" format="default"/>.
             </t>
@@ -196,20 +196,20 @@
                 In addition, if the answerer associates an SDP 'rtcp-mux-only' attribute with
                 an SDP media description ("m=" line) in the answer, and if the corresponding "m=" line
                 in the associated offer contained an SDP 'rtcp-mux' attribute, the answerer MUST in addition associate
-                an SDP 'rtcp-mux' attribute with the same "m=" line, following the procedures in 
+                an SDP 'rtcp-mux' attribute with the same "m=" line, following the procedures in
                 <xref target="RFC5761" pageno="false" format="default"/>.
             </t>
         </section>
         <section title="Offerer Processing of the SDP Answer" anchor="sec-of-off-ans">
             <t>
                 If an offerer associated an SDP 'rtcp-mux-only' attribute with an RTP-based SDP media description ("m=" line)
-                in an offer, and if the corresponding SDP media description ("m=" line) in the associated answer contains 
-                an SDP 'rtcp-mux-only' attribute, and/or an SDP 'rtcp-mux' attribute, the offerer MUST apply the 
+                in an offer, and if the corresponding SDP media description ("m=" line) in the associated answer contains
+                an SDP 'rtcp-mux-only' attribute, and/or an SDP 'rtcp-mux' attribute, the offerer MUST apply the
                 RTP/RTCP multiplexing procedures <xref target="RFC5761" pageno="false" format="default"/>
-                to the associated RTP-based media. If the corresponding SDP media description ("m=" line) in the associated 
+                to the associated RTP-based media. If the corresponding SDP media description ("m=" line) in the associated
                 answer does not contain an SDP 'rtcp-mux-only' attribute, nor an SDP 'rtcp-mux' attribute,
-                the offerer MUST either take appropriate actions in order to disable the associated RTP-based media, 
-                or send a new offer without associating an SDP 'rtcp-mux-only' attribute with the 
+                the offerer MUST either take appropriate actions in order to disable the associated RTP-based media,
+                or send a new offer without associating an SDP 'rtcp-mux-only' attribute with the
                 SDP media description ("m=" line).
             </t>
             <t>
@@ -222,15 +222,15 @@
             <t>
                 When an offerer sends a subsequent offer, if the offerer and answerer have previously
                 negotiated usage of exclusive RTP/RTCP multiplexing for the media associated with an
-                RTP-based SDP media description ("m=" line), the offerer SHOULD associate an SDP 'rtcp-mux-only' 
+                RTP-based SDP media description ("m=" line), the offerer SHOULD associate an SDP 'rtcp-mux-only'
                 with the corresponding SDP media description ("m=" line).
             </t>
             <t>
                 In addition, if the offerer associates an SDP 'rtcp-mux-only' attribute with
-                an SDP media description ("m=" line), the offerer MAY also associate an 
-                SDP 'rtcp-mux' attribute with the same SDP media description ("m=" line), following 
+                an SDP media description ("m=" line), the offerer MAY also associate an
+                SDP 'rtcp-mux' attribute with the same SDP media description ("m=" line), following
                 the procedures in <xref target="RFC5761" pageno="false" format="default"/>.
-            </t> 
+            </t>
             <t>
                 If the offerer does not associate the attributes with the corresponding SDP media description ("m=" line)
                 it is an indication that the offerer no longer wants to use RTP/RTCP multiplexing, and instead
@@ -242,11 +242,11 @@
                 negotiated usage of RTP/RTCP multiplexing for the media associated with an
                 RTP-based SDP media description ("m=" line), the offerer MAY indicate exclusive
                 support of RTP/RTCP multiplexing, following the procedures in <xref target="sec-of-ini-off"/>.
-                The offerer MUST process the associated answer following the procedures in 
+                The offerer MUST process the associated answer following the procedures in
                 <xref target="sec-of-off-ans"/>.
             </t>
             <t>
-                NOTE: It is RECOMMENDED to not switch between usage of RTP/RTCP multiplexing and usage of 
+                NOTE: It is RECOMMENDED to not switch between usage of RTP/RTCP multiplexing and usage of
                 separate ports for RTP and RTCP in a subsequent offer, unless there is a use-case that mandates
                 it.
             </t>
@@ -256,7 +256,7 @@
 	<section title="Update to RFC 5761">
         <section title="General">
             <t>
-                This section updates sections 5.1.1 and 5.1.3 of RFC 5761, by clarifying 
+                This section updates sections 5.1.1 and 5.1.3 of RFC 5761, by clarifying
                 that an offerer can use a mechanism to indicate that it is not able to send and receive RTCP
                 on separate ports, and that the offerer shall terminate the affected streams if the answerer
                 does not indicate support of RTP/RTCP multiplexing. It also clarifies that, when the
@@ -279,7 +279,7 @@ OLD TEXT:
    when talking to a peer that does not understand the "a=rtcp-mux"
    attribute.
 
-   
+
 NEW TEXT:
 
    If the answer does not contain an "a=rtcp-mux" attribute, the offerer
@@ -288,13 +288,13 @@ NEW TEXT:
    usual port-selection rules (either the port pair, or a signalled port
    if the "a=rtcp:" attribute [10] is also included).  This will occur
    when talking to a peer that does not understand the "a=rtcp-mux"
-   attribute. However, if the offerer indicated in the offer that it is 
+   attribute. However, if the offerer indicated in the offer that it is
    not able to send and receive RTCP on a separate port, the offerer
    MUST disable the media streams associated with the attribute. The
-   mechanism for indicating that the offerer is not able to send and 
-   receive RTCP on a separate port is outside the scope of this 
-   specification.   
-      
+   mechanism for indicating that the offerer is not able to send and
+   receive RTCP on a separate port is outside the scope of this
+   specification.
+
                 ]]></artwork>
             </figure>
         </section>
@@ -303,7 +303,7 @@ NEW TEXT:
                 <artwork align="left" alt="" height="" name="" type="" width="" xml:space="preserve"><![CDATA[
 
 OLD TEXT:
-                                
+
    If it is desired to use both ICE and multiplexed RTP and RTCP, the
    initial offer MUST contain an "a=rtcp-mux" attribute to indicate that
    RTP and RTCP multiplexing is desired and MUST contain "a=candidate:"
@@ -311,30 +311,30 @@ OLD TEXT:
    fallback port for RTCP in the case that the answerer does not support
    RTP and RTCP multiplexing.  This MUST be done for each media where
    RTP and RTCP multiplexing is desired.
-        
-            
+
+
 NEW TEXT:
-                                
+
    If it is desired to use both ICE and multiplexed RTP and RTCP, the
    initial offer MUST contain an "a=rtcp-mux" attribute to indicate that
    RTP and RTCP multiplexing is desired and MUST contain "a=candidate:"
    lines for both RTP and RTCP along with an "a=rtcp:" line indicating a
    fallback port for RTCP in the case that the answerer does not support
    RTP and RTCP multiplexing.  This MUST be done for each media where
-   RTP and RTCP multiplexing is desired. However, if the offerer 
-   indicates in the offer that it is not able to send and receive RTCP 
-   on a separate port, the offerer MUST NOT include "a=candidiate:" lines 
-   for RTCP, and the offerer MUST NOT provide a fallback port for RTCP using 
-   the "a=rtcp:" line.
-        
+   RTP and RTCP multiplexing is desired. However, if the offerer
+   indicates in the offer that it is not able to send and receive RTCP
+   on a separate port, the offerer MUST NOT include "a=candidiate:"
+   lines for RTCP, and the offerer MUST NOT provide a fallback port for
+   RTCP using the "a=rtcp:" line.
+
                 ]]></artwork>
             </figure>
-        </section>    
+        </section>
 	</section>
-    
+
 	<section title="ICE Considerations">
 		<t>
-            As defined in <xref target="I-D.ietf-ice-rfc5245bis"/>, if an entity is aware that the 
+            As defined in <xref target="RFC5245"/>, if an entity is aware that the
             remote peer supports, and is willing to use, RTP/RTCP multiplexing,
             the entity will only provide RTP candidates (component ID 1).
             However, only providing RTP candidates does not as such imply
@@ -346,21 +346,21 @@ NEW TEXT:
             attributes.
         </t>
 	</section>
-	
+
 	<section title="Security Considerations">
 		<t>
             This document does not introduce new security considerations
-            in additions to those specified in <xref target="RFC3605" 
-            pageno="false" format="default"/> and <xref target="RFC5761" 
+            in additions to those specified in <xref target="RFC3605"
+            pageno="false" format="default"/> and <xref target="RFC5761"
             pageno="false" format="default"/>.
 		</t>
 	</section>
 
 	<section anchor="section.iana" title="IANA Considerations">
         <t>
-            This document updates the "Session Description Protocol Parameters" registry 
+            This document updates the "Session Description Protocol Parameters" registry
             as specified in Section 8.2.2 of <xref target="RFC4566" pageno="false" format="default"/>.
-            Specifically, it adds the SDP 'rtcp-mux-only' attribute to the table for SDP 
+            Specifically, it adds the SDP 'rtcp-mux-only' attribute to the table for SDP
             media level attributes.
         </t>
         <figure>
@@ -372,23 +372,37 @@ NEW TEXT:
     Purpose: Indicate exclusive support of RTP/RTCP multiplexing
     Appropriate Values:
     Contact name: Christer Holmberg
-    Category: NORMAL
-    
-    
+    Mux Category: IDENTICAL
+
+
 			]]></artwork>
-		</figure>        
+		</figure>
 	</section>
-                   
+
 	<section title="Acknowledgments">
 		<t>
-            Thanks to Roman Shpount, Paul Kyzivat, Ari Keranen, Bo Burman, 
-            Tomas Frankkila and Martin Thomson for their comments and input 
+            Thanks to Roman Shpount, Paul Kyzivat, Ari Keranen, Bo Burman,
+            Tomas Frankkila and Martin Thomson for their comments and input
             on the document.
 		</t>
 	</section>
-		
-	<section title="Change Log">	
+
+	<section title="Change Log">
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
+    <t>
+  Changes from draft-ietf-mmusic-rtcp-mux-exclusive-04
+  <list style="symbols">
+    <t>
+                Changes based on comments from Flemming Andreasen.
+            </t>
+            <t>
+                - Attribute mux category changed to IDENTICAL.
+            </t>
+            <t>
+                - Reference to draft-5245bis changed to RFC 5245.
+            </t>
+  </list>
+</t>
         <t>
 			Changes from draft-ietf-mmusic-rtcp-mux-exclusive-03
 			<list style="symbols">
@@ -402,7 +416,7 @@ NEW TEXT:
                     RFC 5761 updates added.
                 </t>
 			</list>
-		</t>			
+		</t>
         <t>
 			Changes from draft-ietf-mmusic-rtcp-mux-exclusive-02
 			<list style="symbols">
@@ -410,7 +424,7 @@ NEW TEXT:
                     Minor editorial fix.
                 </t>
 			</list>
-		</t>			
+		</t>
         <t>
 			Changes from draft-ietf-mmusic-rtcp-mux-exclusive-01
 			<list style="symbols">
@@ -418,7 +432,7 @@ NEW TEXT:
                     Mux category and source-specific applicability added.
                 </t>
 			</list>
-		</t>			
+		</t>
         <t>
 			Changes from draft-ietf-mmusic-rtcp-mux-exclusive-00
 			<list style="symbols">
@@ -432,7 +446,7 @@ NEW TEXT:
                     IANA considerations added.
                 </t>
 			</list>
-		</t>			
+		</t>
         <t>
 			Changes from draft-holmberg-mmusic-rtcp-mux-exclusive-03
 			<list style="symbols">
@@ -440,7 +454,7 @@ NEW TEXT:
                     Submitted as draft-ietf-mmusic-rtcp-mux-exclusive-00.
                 </t>
 			</list>
-		</t>			
+		</t>
         <t>
 			Changes from draft-holmberg-mmusic-rtcp-mux-exclusive-02
 			<list style="symbols">
@@ -448,7 +462,7 @@ NEW TEXT:
                     Intended status changed to "Standards track".
                 </t>
 			</list>
-		</t>			
+		</t>
         <t>
 			Changes from draft-holmberg-mmusic-rtcp-mux-exclusive-01
 			<list style="symbols">
@@ -457,7 +471,7 @@ NEW TEXT:
                     optional IP address part.
                 </t>
 			</list>
-		</t>			
+		</t>
         <t>
 			Changes from draft-holmberg-mmusic-rtcp-mux-exclusive-00
 			<list style="symbols">
@@ -468,7 +482,7 @@ NEW TEXT:
                     ICE considerations added.
                 </t>
 			</list>
-		</t>			
+		</t>
 	</section>
 </middle>
 
@@ -477,8 +491,8 @@ NEW TEXT:
 		<?rfc include="reference.RFC.2119"?>
 		<?rfc include="reference.RFC.3264"?>
         <?rfc include="reference.RFC.4566"?>
+        <?rfc include="reference.RFC.5245"?>
         <?rfc include="reference.RFC.5761"?>
-        <?rfc include="reference.I-D.draft-ietf-ice-rfc5245bis-00"?>
     </references>
     <references title="Informative References">
         <?rfc include="reference.RFC.3605"?>
