@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-05" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-06" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -129,11 +129,10 @@
         </t>
         <t>
             The mux category <xref target="I-D.ietf-mmusic-sdp-mux-attributes"/>
-            for the 'rtcp-mux-only' attribute is 'NORMAL', which means that the
-            attribute can be associated with an individual media description, even if the
-            media description is multiplexed with other media descriptions
-            <xref target="I-D.ietf-mmusic-sdp-bundle-negotiation"/> with which the
-            attribute is not associated.
+            for the 'rtcp-mux-only' attribute is 'IDENTICAL', which means that the
+            attribute, if used within a BUNDLE group <xref target="I-D.ietf-mmusic-sdp-bundle-negotiation"/>,
+            must be associated with all multiplexed RTP-based media descriptions
+            within the BUNDLE group.
         </t>
         <t>
             The 'rtcp-mux-only' attribute applies to the whole associated
@@ -390,19 +389,27 @@ NEW TEXT:
 	<section title="Change Log">
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
     <t>
-  Changes from draft-ietf-mmusic-rtcp-mux-exclusive-04
-  <list style="symbols">
-    <t>
-                Changes based on comments from Flemming Andreasen.
-            </t>
-            <t>
-                - Attribute mux category changed to IDENTICAL.
-            </t>
-            <t>
-                - Reference to draft-5245bis changed to RFC 5245.
-            </t>
-  </list>
-</t>
+       Changes from draft-ietf-mmusic-rtcp-mux-exclusive-05
+       <list style="symbols">
+         <t>
+           Editorial fix.
+         </t>
+       </list>
+     </t>
+     <t>
+       Changes from draft-ietf-mmusic-rtcp-mux-exclusive-04
+       <list style="symbols">
+         <t>
+            Changes based on comments from Flemming Andreasen.
+         </t>
+         <t>
+            - Attribute mux category changed to IDENTICAL.
+         </t>
+         <t>
+            - Reference to draft-5245bis changed to RFC 5245.
+         </t>
+       </list>
+     </t>
         <t>
 			Changes from draft-ietf-mmusic-rtcp-mux-exclusive-03
 			<list style="symbols">
