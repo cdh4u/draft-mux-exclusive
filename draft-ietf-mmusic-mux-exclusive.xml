@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-06" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="pre5378Trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-07" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -369,8 +369,8 @@ NEW TEXT:
     Type of attribute: media-level
     Subject to charset: no
     Purpose: Indicate exclusive support of RTP/RTCP multiplexing
-    Appropriate Values:
-    Contact name: Christer Holmberg
+    Appropriate Values: N/A
+    Contact name: Christer Holmberg (christert.holmberg@ericsson.com)
     Mux Category: IDENTICAL
 
 
@@ -388,6 +388,17 @@ NEW TEXT:
 
 	<section title="Change Log">
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
+    <t>
+       Changes from draft-ietf-mmusic-rtcp-mux-exclusive-06
+       <list style="symbols">
+         <t>
+           - Editorial fix.
+         </t>
+         <t>
+           - Addition of pre-RFC5378 disclaimer.
+         </t>
+       </list>
+     </t>
     <t>
        Changes from draft-ietf-mmusic-rtcp-mux-exclusive-05
        <list style="symbols">
@@ -505,7 +516,7 @@ NEW TEXT:
         <?rfc include="reference.RFC.3605"?>
         <?rfc include="reference.RFC.5576"?>
         <?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-12"?>
-        <?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-25"?>
+        <?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-30"?>
     </references>
 </back>
 </rfc>
