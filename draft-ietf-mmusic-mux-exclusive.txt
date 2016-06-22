@@ -1,7 +1,6 @@
 
 
 
-
 Network Working Group                                        C. Holmberg
 Internet-Draft                                                  Ericsson
 Updates: 5761 (if approved)                                June 22, 2016
@@ -10,7 +9,7 @@ Expires: December 24, 2016
 
 
     Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
-                  draft-ietf-mmusic-mux-exclusive-08s
+                 draft-ietf-mmusic-mux-exclusive-08.txt
 
 Abstract
 
@@ -105,7 +104,7 @@ Table of Contents
    WEBRTC [W3C.WD-webrtc-20120209] applications, that are not required
    to interoperate with non-WEBRTC clients.  For such applications, this
    document defines an SDP attribute to signal intent to require
-   multiplexing.
+   multiplexing.  The use of this attribute in SDP offers [RFC3264] by
 
 
 
@@ -113,6 +112,9 @@ Holmberg                Expires December 24, 2016               [Page 2]
 
 Internet-Draft           Exclusive RTP/RTCP Mux                June 2016
 
+
+   entities that ever need to interoperate with peers that do not
+   support RTC/RTCP multiplexing may harm interoperability.
 
    This document defines a new SDP media-level attribute, 'rtcp-mux-
    only', that can be used by an endpoint to indicate exclusive support
@@ -159,9 +161,6 @@ Internet-Draft           Exclusive RTP/RTCP Mux                June 2016
 
    In an SDP answer, the 'rtcp-mux-only' attribute indicates that the
    answerer supports, and accepts usage of, RTP/RTCP multiplexing for
-   the RTP-based media associated with the SDP media description ("m="
-   line).
-
 
 
 
@@ -169,6 +168,9 @@ Holmberg                Expires December 24, 2016               [Page 3]
 
 Internet-Draft           Exclusive RTP/RTCP Mux                June 2016
 
+
+   the RTP-based media associated with the SDP media description ("m="
+   line).
 
    The usage of the SDP 'rtcp-mux-only' attribute is only defined for
    RTP-based media.
@@ -215,9 +217,6 @@ Internet-Draft           Exclusive RTP/RTCP Mux                June 2016
    ("m=" line), the address and port values of the SDP 'rtcp' attribute
    MUST match the corresponding values for RTP.
 
-   NOTE: This specification does not mandate the usage of the SDP 'rtcp'
-   attribute for RTP/RTCP multiplexing.
-
 
 
 
@@ -225,6 +224,9 @@ Holmberg                Expires December 24, 2016               [Page 4]
 
 Internet-Draft           Exclusive RTP/RTCP Mux                June 2016
 
+
+   NOTE: This specification does not mandate the usage of the SDP 'rtcp'
+   attribute for RTP/RTCP multiplexing.
 
 4.3.  Generating the Answer
 
@@ -271,9 +273,6 @@ Internet-Draft           Exclusive RTP/RTCP Mux                June 2016
    When an offerer sends a subsequent offer, if the offerer and answerer
    have previously negotiated usage of exclusive RTP/RTCP multiplexing
    for the media associated with an RTP-based SDP media description
-   ("m=" line), the offerer SHOULD associate an SDP 'rtcp-mux-only' with
-   the corresponding SDP media description ("m=" line).
-
 
 
 
@@ -281,6 +280,9 @@ Holmberg                Expires December 24, 2016               [Page 5]
 
 Internet-Draft           Exclusive RTP/RTCP Mux                June 2016
 
+
+   ("m=" line), the offerer SHOULD associate an SDP 'rtcp-mux-only' with
+   the corresponding SDP media description ("m=" line).
 
    In addition, if the offerer associates an SDP 'rtcp-mux-only'
    attribute with an SDP media description ("m=" line), the offerer MAY
@@ -319,9 +321,6 @@ Internet-Draft           Exclusive RTP/RTCP Mux                June 2016
    the SDP 'rtcp' attribute).
 
 5.2.  Update to 4th paragraph of section 5.1.1
-
-
-
 
 
 

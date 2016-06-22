@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-08s" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-08.txt" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -69,6 +69,9 @@
             <xref target="W3C.WD-webrtc-20120209"/> applications, that are not required
             to interoperate with non-WEBRTC clients. For such applications, this document
             defines an SDP attribute to signal intent to require multiplexing.
+            The use of this attribute in SDP offers <xref format="default" pageno="false"
+            target="RFC3264"/> by entities that ever need to interoperate with peers
+            that do not support RTC/RTCP multiplexing may harm interoperability.
         </t>
         <t>
             This document defines a new SDP media-level attribute, 'rtcp-mux-only', that can
