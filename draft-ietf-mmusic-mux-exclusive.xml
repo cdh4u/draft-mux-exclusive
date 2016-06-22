@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="pre5378Trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-07" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-08.txt" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -65,8 +65,13 @@
         <t>
             Some newer applications that do not require backward compatibility with peers
             that cannot multiplex RTCP might choose to not implement separation of
-            RTP and RTCP. For those applications, this document defines an SDP attribute
-            to signal intent to require multiplexing.
+            RTP and RTCP. Examples of such applications are W3C WEBRTC
+            <xref target="W3C.WD-webrtc-20120209"/> applications, that are not required
+            to interoperate with non-WEBRTC clients. For such applications, this document
+            defines an SDP attribute to signal intent to require multiplexing.
+            The use of this attribute in SDP offers <xref format="default" pageno="false"
+            target="RFC3264"/> by entities that ever need to interoperate with peers
+            that do not support RTC/RTCP multiplexing may harm interoperability.
         </t>
         <t>
             This document defines a new SDP media-level attribute, 'rtcp-mux-only', that can
@@ -245,7 +250,7 @@
                 <xref target="sec-of-off-ans"/>.
             </t>
             <t>
-                NOTE: It is RECOMMENDED to not switch between usage of RTP/RTCP multiplexing and usage of
+                It is RECOMMENDED to not switch between usage of RTP/RTCP multiplexing and usage of
                 separate ports for RTP and RTCP in a subsequent offer, unless there is a use-case that mandates
                 it.
             </t>
@@ -370,7 +375,7 @@ NEW TEXT:
     Subject to charset: no
     Purpose: Indicate exclusive support of RTP/RTCP multiplexing
     Appropriate Values: N/A
-    Contact name: Christer Holmberg (christert.holmberg@ericsson.com)
+    Contact name: Christer Holmberg (christer.holmberg@ericsson.com)
     Mux Category: IDENTICAL
 
 
@@ -388,6 +393,23 @@ NEW TEXT:
 
 	<section title="Change Log">
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
+    <t>
+       Changes from draft-ietf-mmusic-rtcp-mux-exclusive-07
+       <list style="symbols">
+         <t>
+           Comments from Ben Campbell.
+         </t>
+         <t>
+           - Additional text regarding applications for which the mechanism is suitable.
+         </t>
+         <t>
+           - Removal of pre-RFC5378 disclaimer.
+         </t>
+         <t>
+           - Editorial fixes.
+         </t>
+       </list>
+     </t>
     <t>
        Changes from draft-ietf-mmusic-rtcp-mux-exclusive-06
        <list style="symbols">
@@ -505,18 +527,22 @@ NEW TEXT:
 </middle>
 
 <back>
-    <references title="Normative References">
-		<?rfc include="reference.RFC.2119"?>
-		<?rfc include="reference.RFC.3264"?>
-        <?rfc include="reference.RFC.4566"?>
-        <?rfc include="reference.RFC.5245"?>
-        <?rfc include="reference.RFC.5761"?>
-    </references>
-    <references title="Informative References">
-        <?rfc include="reference.RFC.3605"?>
-        <?rfc include="reference.RFC.5576"?>
-        <?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-12"?>
-        <?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-30"?>
-    </references>
+
+<references title="Normative References">
+<?rfc include="reference.RFC.2119"?>
+<?rfc include="reference.RFC.3264"?>
+<?rfc include="reference.RFC.4566"?>
+<?rfc include="reference.RFC.5245"?>
+<?rfc include="reference.RFC.5761"?>
+</references>
+
+<references title="Informative References">
+<?rfc include="reference.RFC.3605"?>
+<?rfc include="reference.RFC.5576"?>
+<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-12"?>
+<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-31"?>
+<?rfc include='reference.W3C.WD-webrtc-20120209'?>
+</references>
+
 </back>
 </rfc>
