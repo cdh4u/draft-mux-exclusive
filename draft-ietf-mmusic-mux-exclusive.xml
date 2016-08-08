@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-08.txt" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-10.txt" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -72,6 +72,17 @@
             The use of this attribute in SDP offers <xref format="default" pageno="false"
             target="RFC3264"/> by entities that ever need to interoperate with peers
             that do not support RTC/RTCP multiplexing may harm interoperability.
+            Also, while the SDP answerer <xref format="default" pageno="false"
+            target="RFC3264"/> might support, and prefer usage of, fallback to
+            non-multiplex, the attribute indicates that fallback to non-multiplex
+            cannot be enabled. One example of where non-multiplex is preferred
+            is where an endpoint is connected to a radio interface, and wants to use
+            different bearers (possibly with different quality characteristics) for
+            RTP and RTCP. Another example is where the one endpoint is acting as
+            a gateway to a network where RTP/RTCP multiplexing cannot be used.
+            In such case there endpoint may prefer non-multiplexing also towards the
+            other network. Otherwise the endpoint would have to perform de-multiplexing
+            of RTP and RTCP.
         </t>
         <t>
             This document defines a new SDP media-level attribute, 'rtcp-mux-only', that can
@@ -218,8 +229,8 @@
             </t>
             <t>
                 NOTE: This document does not mandate specific actions on how to terminate the RTP media.
-                The offerer might e.g. send a new offer, where the port value of the SDP
-                media description is set to zero, in order to terminate the RTP media.
+                The offerer might e.g. send a new offer where the port value of the SDP
+                media description is set to zero in order to terminate the RTP media.
             </t>
         </section>
         <section title="Modifying the Session">
@@ -289,7 +300,7 @@ NEW TEXT:
    If the answer does not contain an "a=rtcp-mux" attribute, the offerer
    MUST NOT multiplex RTP and RTCP packets on a single port.  Instead,
    it should send and receive RTCP on a port allocated according to the
-   usual port-selection rules (either the port pair, or a signalled port
+   usual port-selection rules (either the port pair, or a signaled port
    if the "a=rtcp:" attribute [10] is also included).  This will occur
    when talking to a peer that does not understand the "a=rtcp-mux"
    attribute. However, if the offerer indicated in the offer that it is
@@ -327,7 +338,7 @@ NEW TEXT:
    RTP and RTCP multiplexing.  This MUST be done for each media where
    RTP and RTCP multiplexing is desired. However, if the offerer
    indicates in the offer that it is not able to send and receive RTCP
-   on a separate port, the offerer MUST NOT include "a=candidiate:"
+   on a separate port, the offerer MUST NOT include "a=candidate:"
    lines for RTCP, and the offerer MUST NOT provide a fallback port for
    RTCP using the "a=rtcp:" line.
 
@@ -387,12 +398,37 @@ NEW TEXT:
 		<t>
             Thanks to Roman Shpount, Paul Kyzivat, Ari Keranen, Bo Burman,
             Tomas Frankkila and Martin Thomson for their comments and input
-            on the document.
+            on the document. Thanks to Francis Dupont for the genart review.
 		</t>
 	</section>
 
 	<section title="Change Log">
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
+    <t>
+       Changes from draft-ietf-mmusic-rtcp-mux-exclusive-09
+       <list style="symbols">
+         <t>
+            Changes based on IESG review comments from Alexey Melnikov
+            and Mirja Kuhlewind:
+         </t>
+         <t>
+            - References to draft-mux-attributes and draft-sdp-bundle
+            made normative.
+         </t>
+         <t>
+            - Text added regarding cases where entities might want to
+            use non-multiplexed RTP and RTCP.
+         </t>
+       </list>
+     </t>
+    <t>
+       Changes from draft-ietf-mmusic-rtcp-mux-exclusive-08
+       <list style="symbols">
+         <t>
+            Editorial changes based on genart comments from Francis Dupont.
+         </t>
+       </list>
+     </t>
     <t>
        Changes from draft-ietf-mmusic-rtcp-mux-exclusive-07
        <list style="symbols">
@@ -534,13 +570,13 @@ NEW TEXT:
 <?rfc include="reference.RFC.4566"?>
 <?rfc include="reference.RFC.5245"?>
 <?rfc include="reference.RFC.5761"?>
+<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-12"?>
+<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-31"?>
 </references>
 
 <references title="Informative References">
 <?rfc include="reference.RFC.3605"?>
 <?rfc include="reference.RFC.5576"?>
-<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-12"?>
-<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-31"?>
 <?rfc include='reference.W3C.WD-webrtc-20120209'?>
 </references>
 
