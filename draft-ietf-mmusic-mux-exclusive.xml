@@ -570,7 +570,7 @@ NEW TEXT:
 <?rfc include="reference.RFC.4566"?>
 <?rfc include="reference.RFC.5245"?>
 <?rfc include="reference.RFC.5761"?>
-<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-12"?>
+<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-13"?>
 <?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-31"?>
 </references>
 
