@@ -141,7 +141,7 @@
             associated with the SDP media description ("m=" line).
         </t>
         <t>
-            The usage of the 'rtcp-mux-only' attribue in an SDP answer is unspecified.
+            The usage of the 'rtcp-mux-only' attribue in an SDP answer is forbidden.
         </t>
         <t>
             The usage of the SDP 'rtcp-mux-only' attribute is only defined for RTP-based
