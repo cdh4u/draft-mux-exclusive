@@ -4,7 +4,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc sortrefs="no" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-10.txt" updates="5761" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-mmusic-mux-exclusive-11.txt" updates="5761" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Exclusive RTP/RTCP Mux">
 		Indicating Exclusive Support of RTP/RTCP Multiplexing using SDP
@@ -136,7 +136,7 @@
         </t>
         <t>
             In an SDP answer, the 'rtcp-mux' attribute <xref target="RFC5761"
-            pageno="false" format="default"/>indicates that the answerer
+            pageno="false" format="default"/> indicates that the answerer
             supports, and accepts usage of, RTP/RTCP multiplexing for the RTP-based media
             associated with the SDP media description ("m=" line).
         </t>
@@ -585,8 +585,8 @@ NEW TEXT:
 <?rfc include="reference.RFC.4566"?>
 <?rfc include="reference.RFC.5245"?>
 <?rfc include="reference.RFC.5761"?>
-<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-13"?>
-<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-31"?>
+<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-mux-attributes-16"?>
+<?rfc include="reference.I-D.draft-ietf-mmusic-sdp-bundle-negotiation-36"?>
 </references>
 
 <references title="Informative References">
