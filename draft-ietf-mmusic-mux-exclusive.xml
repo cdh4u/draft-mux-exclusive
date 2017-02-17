@@ -227,7 +227,8 @@
                 to the associated RTP-based media. If the corresponding SDP media description
                 ("m=" line) in the associated answer does not contain an SDP 'rtcp-mux' attribute,
                 the offerer MUST either take appropriate actions in order to disable the associated
-                RTP-based media, or send a new offer without associating an SDP 'rtcp-mux-only'
+                RTP-based media, e.g., send a new offer with a zero port value associated with the
+                SDP media description ("m=" line), or send a new offer without associating an SDP 'rtcp-mux-only'
                 attribute with the SDP media description ("m=" line).
             </t>
             <t>
