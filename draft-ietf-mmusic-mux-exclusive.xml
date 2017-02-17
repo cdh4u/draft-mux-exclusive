@@ -24,7 +24,7 @@
       </address>
     </author>
 
-    <date year="2016" />
+    <date year="2017" />
     <area>Transport</area>
     <keyword>RTP</keyword>
 	<keyword>RTCP</keyword>
@@ -135,9 +135,13 @@
             media associated with the SDP media description ("m=" line).
         </t>
         <t>
-            In an SDP answer, the 'rtcp-mux-only' attribute indicates that the answerer
+            In an SDP answer, the 'rtcp-mux' attribute <xref target="RFC5761"
+            pageno="false" format="default"/>indicates that the answerer
             supports, and accepts usage of, RTP/RTCP multiplexing for the RTP-based media
             associated with the SDP media description ("m=" line).
+        </t>
+        <t>
+            The usage of the 'rtcp-mux-only' attribue in an SDP answer is forbidden.
         </t>
         <t>
             The usage of the SDP 'rtcp-mux-only' attribute is only defined for RTP-based
@@ -168,10 +172,10 @@
                 procedures for indicating exclusive support of, and negotiating usage of,
                 RTP/RTCP multiplexing.
             </t>
-			<t>
+            <t>
                 The procedures in this section apply to individual RTP-based
                 SDP media descriptions ("m=" lines).
-			</t>
+            </t>
         </section>
 
         <section title="Generating the Initial SDP Offer" anchor="sec-of-ini-off">
@@ -183,7 +187,7 @@
             </t>
             <t>
                 In addition, if the offerer associates an SDP 'rtcp-mux-only' attribute with
-                an SDP media description ("m=" line), the offerer MAY also associate an
+                an SDP media description ("m=" line, the offerer MUST also associate an
                 SDP 'rtcp-mux' attribute with the same SDP media description ("m=" line), following
                 the procedures in <xref target="RFC5761" pageno="false" format="default"/>.
             </t>
@@ -201,31 +205,31 @@
             <t>
                 When an answerer receives an offer that contains an SDP 'rtcp-mux-only' attribute, associated with
                 an RTP-based SDP media description ("m=" line), if the answerer accepts the usage of
-                RTP/RTCP multiplexing, the answerer MUST associate an SDP 'rtcp-mux-only' attribute with
-                the corresponding SDP media description ("m=") in the associated answer. If the answerer does not
+                RTP/RTCP multiplexing, the answerer MUST associate an SDP 'rtcp-mux' attribute with
+                the corresponding SDP media description ("m=") in the associated answer, following the procedures in
+                <xref target="RFC5761" pageno="false" format="default"/>. If the answerer does not
                 accept the usage of RTP/RTCP multiplexing, the answerer MUST either reject the SDP media description ("m=")
                 by setting the port value to zero in the associated answer, or reject the whole offer,
                 following the procedures in <xref target="RFC3264" pageno="false" format="default"/>.
             </t>
             <t>
-                In addition, if the answerer associates an SDP 'rtcp-mux-only' attribute with
-                an SDP media description ("m=" line) in the answer, and if the corresponding "m=" line
-                in the associated offer contained an SDP 'rtcp-mux' attribute, the answerer MUST in addition associate
-                an SDP 'rtcp-mux' attribute with the same "m=" line, following the procedures in
-                <xref target="RFC5761" pageno="false" format="default"/>.
+                The answerer MUST NOT associate an SDP 'rtcp-mux-only' attribute with an
+                SDP media description ("m=" line) in the answer.
             </t>
         </section>
         <section title="Offerer Processing of the SDP Answer" anchor="sec-of-off-ans">
             <t>
-                If an offerer associated an SDP 'rtcp-mux-only' attribute with an RTP-based SDP media description ("m=" line)
-                in an offer, and if the corresponding SDP media description ("m=" line) in the associated answer contains
-                an SDP 'rtcp-mux-only' attribute, and/or an SDP 'rtcp-mux' attribute, the offerer MUST apply the
-                RTP/RTCP multiplexing procedures <xref target="RFC5761" pageno="false" format="default"/>
-                to the associated RTP-based media. If the corresponding SDP media description ("m=" line) in the associated
-                answer does not contain an SDP 'rtcp-mux-only' attribute, nor an SDP 'rtcp-mux' attribute,
-                the offerer MUST either take appropriate actions in order to disable the associated RTP-based media,
-                or send a new offer without associating an SDP 'rtcp-mux-only' attribute with the
-                SDP media description ("m=" line).
+                If an offerer associated an SDP 'rtcp-mux-only' attribute with an RTP-based
+                SDP media description ("m=" line) in an offer, and if the corresponding
+                SDP media description ("m=" line) in the associated answer contains
+                an SDP 'rtcp-mux' attribute, the offerer MUST apply the RTP/RTCP multiplexing
+                procedures <xref target="RFC5761" pageno="false" format="default"/>
+                to the associated RTP-based media. If the corresponding SDP media description
+                ("m=" line) in the associated answer does not contain an SDP 'rtcp-mux' attribute,
+                the offerer MUST either take appropriate actions in order to disable the associated
+                RTP-based media, e.g., send a new offer with a zero port value associated with the
+                SDP media description ("m=" line), or send a new offer without associating an SDP 'rtcp-mux-only'
+                attribute with the SDP media description ("m=" line).
             </t>
             <t>
                 NOTE: This document does not mandate specific actions on how to terminate the RTP media.
@@ -242,7 +246,7 @@
             </t>
             <t>
                 In addition, if the offerer associates an SDP 'rtcp-mux-only' attribute with
-                an SDP media description ("m=" line), the offerer MAY also associate an
+                an SDP media description ("m=" line), the offerer MUST also associate an
                 SDP 'rtcp-mux' attribute with the same SDP media description ("m=" line), following
                 the procedures in <xref target="RFC5761" pageno="false" format="default"/>.
             </t>
@@ -404,6 +408,17 @@ NEW TEXT:
 
 	<section title="Change Log">
 		<t>[RFC EDITOR NOTE: Please remove this section when publishing]</t>
+    <t>
+       Changes from draft-ietf-mmusic-rtcp-mux-exclusive-10
+       <list style="symbols">
+         <t>
+            Changes based on comments from Ekr:
+         </t>
+         <t>
+            - 'rtcp-mux-only' attribute only defined for SDP offers
+         </t>
+       </list>
+     </t>
     <t>
        Changes from draft-ietf-mmusic-rtcp-mux-exclusive-09
        <list style="symbols">
